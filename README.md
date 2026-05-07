@@ -14,6 +14,7 @@ SPM:
 ## Usage
 
 ```swift
+import Foundation
 import Termios
 
 let password: String
