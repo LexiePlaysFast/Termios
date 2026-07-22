@@ -36,26 +36,26 @@ public struct Termios {
 
     /// Input flags
     public var inputFlags: InputFlags {
-        get { return InputFlags(raw.c_iflag) }
-        set { raw.c_iflag = newValue.rawValue }
+        get { return InputFlags(UInt32(raw.c_iflag)) }
+        set { raw.c_iflag = UInt(newValue.rawValue) }
     }
 
     /// Output flags
     public var outputFlags: OutputFlags {
-        get { return OutputFlags(raw.c_oflag) }
-        set { raw.c_oflag = newValue.rawValue }
+        get { return OutputFlags(UInt32(raw.c_oflag)) }
+        set { raw.c_oflag = UInt(newValue.rawValue) }
     }
 
     /// Control flags
     public var controlFlags: ControlFlags {
-        get { return ControlFlags(raw.c_cflag) }
-        set { raw.c_cflag = newValue.rawValue }
+        get { return ControlFlags(UInt32(raw.c_cflag)) }
+        set { raw.c_cflag = UInt(newValue.rawValue) }
     }
 
     /// Local flags
     public var localFlags: LocalFlags {
-        get { return LocalFlags(raw.c_lflag) }
-        set { raw.c_lflag = newValue.rawValue }
+        get { return LocalFlags(UInt32(raw.c_lflag)) }
+        set { raw.c_lflag = UInt(newValue.rawValue) }
     }
 
     /// Input speed
@@ -82,27 +82,6 @@ public struct Termios {
             throw ErrNo.lastError
         }
       }
-    }
-
-    /// Set the input speed.
-    public mutating func setInputSpeed(baud: UInt32) throws {
-        guard cfsetispeed(&raw, baud) == 0 else {
-            throw ErrNo.lastError
-        }
-    }
-
-    /// Set the output speed.
-    public mutating func setOutputSpeed(baud: UInt32) throws {
-        guard cfsetospeed(&raw, baud) == 0 else {
-            throw ErrNo.lastError
-        }
-    }
-
-    /// Set both input and output speed.
-    public mutating func setSpeed(baud: UInt32) throws {
-        guard cfsetspeed(&raw, baud) == 0 else {
-            throw ErrNo.lastError
-        }
     }
 
     /// Update terminal size

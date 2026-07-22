@@ -38,13 +38,6 @@ public struct LocalFlags: OptionSet {
     /// Enable canonical mode (described below).
     public static let canonical = LocalFlags(ICANON)
 
-    /**
-    (not in POSIX; not supported under Linux) If canonical is also set, terminal is uppercase only. Input is converted
-    to lowercase, except of characters preceded by \. On output, uppercase characters are preceded by \ and lowercase
-    characters are converted to uppercase. [requires _BSD_SOURCE, _SVID_SOURCE, or _XOPEN_SOURCE]
-    */
-    public static let xCase = LocalFlags(XCASE)
-
     /// Echo input characters
     public static let echo = LocalFlags(ECHO)
 
@@ -78,11 +71,6 @@ public struct LocalFlags: OptionSet {
     echoErase and echoPrint. [requires _BSD_SOURCE or _SVID_SOURCE]
     */
     public static let echoKillErase = LocalFlags(ECHOKE)
-
-    #if os(macOS)
-    /// (not in POSIX) Echo only when a process is reading. (Not implemented on Linux.)
-    public static let deafEcho = LocalFlags(DEFECHO)
-    #endif
 
     /**
     (not in POSIX; not supported under Linux) Output is being flushed. This flag is toggled by typing the DISCARD

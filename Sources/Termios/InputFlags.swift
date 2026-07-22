@@ -74,9 +74,6 @@ public struct InputFlags: OptionSet {
     /// Translate carriage return to newline on input (unless ignoreCR is set).
     public static let crToNL = InputFlags(ICRNL)
 
-    /// (not in POSIX) Map uppercase characters to lowercase on input.
-    public static let lowercased = InputFlags(IUCLC)
-
     /// Enable XON/XOFF flow control on output.
     public static let xOn = InputFlags(IXON)
 
@@ -94,7 +91,4 @@ public struct InputFlags: OptionSet {
     set.
     */
     public static let maxBell = InputFlags(IMAXBEL)
-
-    /// (not in POSIX) Input is UTF8; this allows character-erase to be correctly performed in cooked mode.
-    public static let utf8 = InputFlags(IUTF8)
 }
