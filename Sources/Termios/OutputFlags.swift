@@ -35,9 +35,6 @@ public struct OutputFlags: OptionSet {
     /// Enable implementation-defined output processing.
     public static let post = OutputFlags(OPOST)
 
-    /// (not in POSIX) Map lowercase characters to uppercase on output.
-    public static let uppercased = OutputFlags(OLCUC)
-
     /// (XSI) Map NL to CR-NL on output.
     public static let nlToCR = OutputFlags(ONLCR)
 
